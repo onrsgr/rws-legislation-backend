@@ -27,21 +27,25 @@ public class LegislationFileController {
 
     @GetMapping(value = "/searchfromsystem")
     public List<LegislationSearchResult> searchFileFromDatabase(LegislationSearchRequest legislationSearchRequest){
+
         return null;
     }
 
     @PostMapping(value = "/addnewfile")
     public String addNewFile(LegislationFile legislationFile){
+        legislationService.addNewFiletoDB(legislationFile);
         return "test";
     }
 
     @PostMapping(value = "/updatefile")
     public String updateFile(LegislationFile legislationFile){
+        legislationService.updateFileInDB(legislationFile);
         return "test";
     }
 
     @DeleteMapping(value = "/deletefile")
     public String deleteFile(LegislationFile legislationFile){
+        legislationService.deleteFileFromDB(legislationFile);
         return "test";
     }
 
