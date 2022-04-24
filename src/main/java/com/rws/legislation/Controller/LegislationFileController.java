@@ -5,6 +5,7 @@ import com.rws.legislation.Model.LegislationSearchRequest;
 import com.rws.legislation.Model.LegislationSearchResult;
 import com.rws.legislation.Service.LegislationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,27 +27,24 @@ public class LegislationFileController {
     }
 
     @GetMapping(value = "/searchfromsystem")
-    public List<LegislationSearchResult> searchFileFromDatabase(LegislationSearchRequest legislationSearchRequest){
+    public List<LegislationSearchResult> searchFileFromDatabase(LegislationSearchRequest legislationSearchRequest) {
 
         return null;
     }
 
     @PostMapping(value = "/addnewfile")
-    public String addNewFile(LegislationFile legislationFile){
-        legislationService.addNewFiletoDB(legislationFile);
-        return "test";
+    public ResponseEntity<LegislationFile> addNewFile(LegislationFile legislationFile) {
+        return legislationService.addNewFiletoDB(legislationFile);
     }
 
     @PostMapping(value = "/updatefile")
-    public String updateFile(LegislationFile legislationFile){
-        legislationService.updateFileInDB(legislationFile);
-        return "test";
+    public ResponseEntity<LegislationFile> updateFile(LegislationFile legislationFile) {
+        return legislationService.updateFileInDB(legislationFile);
     }
 
     @DeleteMapping(value = "/deletefile")
-    public String deleteFile(LegislationFile legislationFile){
-        legislationService.deleteFileFromDB(legislationFile);
-        return "test";
+    public ResponseEntity<LegislationFile> deleteFile(LegislationFile legislationFile) {
+        return legislationService.deleteFileFromDB(legislationFile);
     }
 
 }
