@@ -13,7 +13,7 @@ public class LegislationFile {
     @Column(name = "file_id")
     Long fileId;
     @NotEmpty
-    @Column
+    @Column(name = "file_number")
     long fileNumber;
     @NotEmpty
     @Column(name = "file_content")
