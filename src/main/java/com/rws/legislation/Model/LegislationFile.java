@@ -13,11 +13,20 @@ public class LegislationFile {
     @Column(name = "file_id")
     Long fileId;
     @NotEmpty
+    @Column
+    long fileNumber;
+    @NotEmpty
     @Column(name = "file_content")
     String fileContent;
     @NotEmpty
+    @Column(name = "file_header")
+    String fileHeader;
+    @NotEmpty
     @Column(name = "file_author")
     String fileAuthor;
+    @NotEmpty
+    @Column(name = "file_accept_date")
+    Date fileAcceptDate;
     @NotEmpty
     @Column(name = "file_date")
     Date fileDate;
@@ -34,10 +43,13 @@ public class LegislationFile {
     public LegislationFile() {
     }
 
-    public LegislationFile(Long fileId, String fileContent, String fileAuthor, Date fileDate, String fileTag, String fileText, boolean fileStatus) {
+    public LegislationFile(Long fileId, long fileNumber, String fileContent, String fileHeader, String fileAuthor, Date fileAcceptDate, Date fileDate, String fileTag, String fileText, boolean fileStatus) {
         this.fileId = fileId;
+        this.fileNumber = fileNumber;
         this.fileContent = fileContent;
+        this.fileHeader = fileHeader;
         this.fileAuthor = fileAuthor;
+        this.fileAcceptDate = fileAcceptDate;
         this.fileDate = fileDate;
         this.fileTag = fileTag;
         this.fileText = fileText;
@@ -52,6 +64,14 @@ public class LegislationFile {
         this.fileId = fileId;
     }
 
+    public long getFileNumber() {
+        return fileNumber;
+    }
+
+    public void setFileNumber(long fileNumber) {
+        this.fileNumber = fileNumber;
+    }
+
     public String getFileContent() {
         return fileContent;
     }
@@ -60,12 +80,28 @@ public class LegislationFile {
         this.fileContent = fileContent;
     }
 
+    public String getFileHeader() {
+        return fileHeader;
+    }
+
+    public void setFileHeader(String fileHeader) {
+        this.fileHeader = fileHeader;
+    }
+
     public String getFileAuthor() {
         return fileAuthor;
     }
 
     public void setFileAuthor(String fileAuthor) {
         this.fileAuthor = fileAuthor;
+    }
+
+    public Date getFileAcceptDate() {
+        return fileAcceptDate;
+    }
+
+    public void setFileAcceptDate(Date fileAcceptDate) {
+        this.fileAcceptDate = fileAcceptDate;
     }
 
     public Date getFileDate() {
@@ -104,9 +140,12 @@ public class LegislationFile {
     public String toString() {
         return "LegislationFile{" +
                 "fileId=" + fileId +
+                ", fileNumber=" + fileNumber +
                 ", fileContent='" + fileContent + '\'' +
+                ", fileHeader='" + fileHeader + '\'' +
                 ", fileAuthor='" + fileAuthor + '\'' +
-                ", fileDate='" + fileDate + '\'' +
+                ", fileAcceptDate=" + fileAcceptDate +
+                ", fileDate=" + fileDate +
                 ", fileTag='" + fileTag + '\'' +
                 ", fileText='" + fileText + '\'' +
                 ", fileStatus=" + fileStatus +
@@ -118,11 +157,11 @@ public class LegislationFile {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LegislationFile that = (LegislationFile) o;
-        return fileStatus == that.fileStatus && Objects.equals(fileId, that.fileId) && Objects.equals(fileContent, that.fileContent) && Objects.equals(fileAuthor, that.fileAuthor) && Objects.equals(fileDate, that.fileDate) && Objects.equals(fileTag, that.fileTag) && Objects.equals(fileText, that.fileText);
+        return fileNumber == that.fileNumber && fileStatus == that.fileStatus && Objects.equals(fileId, that.fileId) && Objects.equals(fileContent, that.fileContent) && Objects.equals(fileHeader, that.fileHeader) && Objects.equals(fileAuthor, that.fileAuthor) && Objects.equals(fileAcceptDate, that.fileAcceptDate) && Objects.equals(fileDate, that.fileDate) && Objects.equals(fileTag, that.fileTag) && Objects.equals(fileText, that.fileText);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fileId, fileContent, fileAuthor, fileDate, fileTag, fileText, fileStatus);
+        return Objects.hash(fileId, fileNumber, fileContent, fileHeader, fileAuthor, fileAcceptDate, fileDate, fileTag, fileText, fileStatus);
     }
 }
