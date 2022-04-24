@@ -1,9 +1,8 @@
 package com.rws.legislation.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -11,18 +10,31 @@ public class LegislationFile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "file_id")
     Long fileId;
+    @NotEmpty
+    @Column(name = "file_content")
     String fileContent;
+    @NotEmpty
+    @Column(name = "file_author")
     String fileAuthor;
-    String fileDate;
+    @NotEmpty
+    @Column(name = "file_date")
+    Date fileDate;
+    @NotEmpty
+    @Column(name = "file_tag")
     String fileTag;
+    @NotEmpty
+    @Column(name = "file_text")
     String fileText;
+    @NotEmpty
+    @Column(name = "file_status")
     boolean fileStatus;
 
     public LegislationFile() {
     }
 
-    public LegislationFile(Long fileId, String fileContent, String fileAuthor, String fileDate, String fileTag, String fileText, boolean fileStatus) {
+    public LegislationFile(Long fileId, String fileContent, String fileAuthor, Date fileDate, String fileTag, String fileText, boolean fileStatus) {
         this.fileId = fileId;
         this.fileContent = fileContent;
         this.fileAuthor = fileAuthor;
@@ -56,11 +68,11 @@ public class LegislationFile {
         this.fileAuthor = fileAuthor;
     }
 
-    public String getFileDate() {
+    public Date getFileDate() {
         return fileDate;
     }
 
-    public void setFileDate(String fileDate) {
+    public void setFileDate(Date fileDate) {
         this.fileDate = fileDate;
     }
 
