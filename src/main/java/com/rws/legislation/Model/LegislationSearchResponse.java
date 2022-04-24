@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Component
-public class LegislationSearchResult {
+public class LegislationSearchResponse {
 
 
     long fileNumber;
@@ -17,10 +17,10 @@ public class LegislationSearchResult {
     Date fileDate;
     String fileTag;
 
-    public LegislationSearchResult() {
+    public LegislationSearchResponse() {
     }
 
-    public LegislationSearchResult(long fileNumber, String fileContent, String fileHeader, String fileAuthor, Date fileAcceptDate, Date fileDate, String fileTag) {
+    public LegislationSearchResponse(long fileNumber, String fileContent, String fileHeader, String fileAuthor, Date fileAcceptDate, Date fileDate, String fileTag) {
         this.fileNumber = fileNumber;
         this.fileContent = fileContent;
         this.fileHeader = fileHeader;
@@ -103,7 +103,7 @@ public class LegislationSearchResult {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LegislationSearchResult that = (LegislationSearchResult) o;
+        LegislationSearchResponse that = (LegislationSearchResponse) o;
         return fileNumber == that.fileNumber && Objects.equals(fileContent, that.fileContent) && Objects.equals(fileHeader, that.fileHeader) && Objects.equals(fileAuthor, that.fileAuthor) && Objects.equals(fileAcceptDate, that.fileAcceptDate) && Objects.equals(fileDate, that.fileDate) && Objects.equals(fileTag, that.fileTag);
     }
 

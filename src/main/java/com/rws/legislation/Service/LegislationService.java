@@ -1,14 +1,16 @@
 package com.rws.legislation.Service;
 
 import com.rws.legislation.Model.LegislationFile;
+import com.rws.legislation.Model.LegislationSearchRequest;
+import com.rws.legislation.Model.LegislationSearchResponse;
 import com.rws.legislation.Repository.LegislationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.RequestScope;
+
+import java.util.List;
 
 @Service
-@RequestScope
 public class LegislationService {
 
     private LegislationRepository legislationRepository;
@@ -19,6 +21,11 @@ public class LegislationService {
     @Autowired
     public LegislationService(LegislationRepository legislationRepository) {
         this.legislationRepository = legislationRepository;
+    }
+
+    public final List<LegislationSearchResponse> searchFilesFromDB(LegislationSearchRequest legislationSearchRequest){
+
+        return null;
     }
 
     public final ResponseEntity<LegislationFile> addNewFiletoDB(LegislationFile legislationFile) {
@@ -33,9 +40,13 @@ public class LegislationService {
         return ResponseEntity.accepted().body(legislationFile);
     }
 
-    public final ResponseEntity<LegislationFile> deleteFileFromDB(LegislationFile legislationFile) {
-        legislationRepository.deleteFileById(legislationFile.getFileId());
-        return ResponseEntity.accepted().body(legislationFile);
+    public final ResponseEntity deleteFileFromDB(LegislationFile legislationFile) {
+        if(legislationRepository.existsById(legislationFile.getFileId())) {
+            legislationRepository.deleteFileById(legislationFile.getFileId());
+            return ResponseEntity.accepted().body(legislationFile);
+        } else {
+            return ResponseEntity.accepted().body("error");
+        }
     }
 
 }

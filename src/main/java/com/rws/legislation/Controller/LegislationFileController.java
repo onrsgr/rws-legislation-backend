@@ -2,14 +2,11 @@ package com.rws.legislation.Controller;
 
 import com.rws.legislation.Model.LegislationFile;
 import com.rws.legislation.Model.LegislationSearchRequest;
-import com.rws.legislation.Model.LegislationSearchResult;
+import com.rws.legislation.Model.LegislationSearchResponse;
 import com.rws.legislation.Service.LegislationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
@@ -29,23 +26,22 @@ public class LegislationFileController {
     }
 
     @GetMapping(value = "/searchfile")
-    public List<LegislationSearchResult> searchFileFromDatabase(LegislationSearchRequest legislationSearchRequest) {
-
-        return null;
+    public List<LegislationSearchResponse> searchFileFromDatabase(LegislationSearchRequest legislationSearchRequest) {
+        return legislationService.searchFilesFromDB(legislationSearchRequest);
     }
 
     @PostMapping(value = "/addnewfile")
-    public ResponseEntity<LegislationFile> addNewFile(LegislationFile legislationFile) {
+    @ResponseBody public ResponseEntity<LegislationFile> addNewFile(@RequestBody LegislationFile legislationFile) {
         return legislationService.addNewFiletoDB(legislationFile);
     }
 
     @PostMapping(value = "/updatefile")
-    public ResponseEntity<LegislationFile> updateFile(LegislationFile legislationFile) {
+    public ResponseEntity<LegislationFile> updateFile(@RequestBody LegislationFile legislationFile) {
         return legislationService.updateFileInDB(legislationFile);
     }
 
     @DeleteMapping(value = "/deletefile")
-    public ResponseEntity<LegislationFile> deleteFile(LegislationFile legislationFile) {
+    public ResponseEntity<LegislationFile> deleteFile(@RequestBody LegislationFile legislationFile) {
         return legislationService.deleteFileFromDB(legislationFile);
     }
 

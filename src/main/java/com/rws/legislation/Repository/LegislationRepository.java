@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.annotation.RequestScope;
 
 import javax.transaction.Transactional;
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.Date;
 public interface LegislationRepository extends JpaRepository<LegislationFile, Long> {
 
     @Modifying
+    @Transactional
     @Query(value = "delete from rws_legislation where rws_legislation.file_id = ?1", nativeQuery = true)
     void deleteFileById(long fileId);
 
@@ -24,6 +26,4 @@ public interface LegislationRepository extends JpaRepository<LegislationFile, Lo
             "rws_legislation.file_date = ?7, rws_legislation.file_tag = ?8, rws_legislation.file_text = ?9, " +
             "rws_legislation.file_status = ?10 where rws_legislation.file_id = ?1", nativeQuery = true)
     void updateFileById(Long fileId, long fileNumber, String fileContent, String fileHeader, String fileAuthor, Date fileAcceptDate, Date fileDate, String fileTag, String fileText, boolean fileStatus);
-
-
 }
