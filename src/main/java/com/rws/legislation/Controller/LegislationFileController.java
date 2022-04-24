@@ -1,17 +1,20 @@
 package com.rws.legislation.Controller;
 
 import com.rws.legislation.Model.LegislationFile;
+import com.rws.legislation.Model.LegislationSearchRequest;
 import com.rws.legislation.Model.LegislationSearchResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class LegislationFileController {
 
     @GetMapping(value = "/searchfromsystem")
-    public LegislationSearchResult searchFileFromDatabase(){
+    public List<LegislationSearchResult> searchFileFromDatabase(LegislationSearchRequest legislationSearchRequest){
         return null;
     }
 
