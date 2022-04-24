@@ -1,7 +1,14 @@
 package com.rws.legislation.Controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LegislationFileController {
+
+    @GetMapping(value = "/search")
+    public String searchFileFromDatabase(){
+
+        return "test";
+    }
 }
