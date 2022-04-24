@@ -2,41 +2,34 @@ package com.rws.legislation.Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "rws_legislation")
 public class LegislationFile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "file_id")
     Long fileId;
-    @NotEmpty
     @Column(name = "file_number")
     long fileNumber;
-    @NotEmpty
     @Column(name = "file_content")
     String fileContent;
-    @NotEmpty
     @Column(name = "file_header")
     String fileHeader;
-    @NotEmpty
     @Column(name = "file_author")
     String fileAuthor;
-    @NotEmpty
     @Column(name = "file_accept_date")
     Date fileAcceptDate;
-    @NotEmpty
     @Column(name = "file_date")
     Date fileDate;
-    @NotEmpty
     @Column(name = "file_tag")
     String fileTag;
-    @NotEmpty
     @Column(name = "file_text")
     String fileText;
-    @NotEmpty
     @Column(name = "file_status")
     boolean fileStatus;
 
