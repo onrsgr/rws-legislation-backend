@@ -10,7 +10,7 @@ import java.util.Objects;
 public class LegislationFile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long fileId;
     String fileContent;
     String fileAuthor;
