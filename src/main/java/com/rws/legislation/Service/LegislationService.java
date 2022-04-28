@@ -34,9 +34,10 @@ public class LegislationService {
     }
 
     public final ResponseEntity<LegislationFile> updateFileInDB(LegislationFile legislationFile) {
-        legislationRepository.updateFileById(legislationFile.getFileId(), legislationFile.getFileNumber(), legislationFile.getFileContent(),
-                legislationFile.getFileHeader(), legislationFile.getFileAuthor(), legislationFile.getFileAcceptDate(), legislationFile.getFileDate(),
-                legislationFile.getFileTag(), legislationFile.getFileText(), legislationFile.isFileStatus());
+        //legislationRepository.updateFileById(legislationFile.getFileId(), legislationFile.getFileNumber(), legislationFile.getFileContent(),
+        //        legislationFile.getFileHeader(), legislationFile.getFileAuthor(), legislationFile.getFileAcceptDate(), legislationFile.getFileDate(),
+        //        legislationFile.getFileTag(), legislationFile.getFileText(), legislationFile.isFileStatus());
+        legislationRepository.saveAndFlush(legislationFile);
         return ResponseEntity.accepted().body(legislationFile);
     }
 
