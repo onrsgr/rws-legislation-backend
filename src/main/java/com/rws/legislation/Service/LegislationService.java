@@ -38,6 +38,7 @@ public class LegislationService {
         //        legislationFile.getFileHeader(), legislationFile.getFileAuthor(), legislationFile.getFileAcceptDate(), legislationFile.getFileDate(),
         //        legislationFile.getFileTag(), legislationFile.getFileText(), legislationFile.isFileStatus());
         legislationRepository.saveAndFlush(legislationFile);
+        //legislationRepository.updateFileById(legislationFile);
         return ResponseEntity.accepted().body(legislationFile);
     }
 
